@@ -1,0 +1,23 @@
+.preview {
+  position: relative;
+}
+.preview_close {
+  position: absolute;
+  top: 0;
+  margin: 5px;
+  cursor: pointer;
+  color: white;
+}
+.preview_toolbarRight {
+  position: absolute;
+  color: white;
+  right: 0;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.preview_toolbarRight > .MuiSvgIcon-root {
+  font-size: 25px;
+  margin: 8px;
+  cursor: pointer;
+}
