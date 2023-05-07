@@ -8,8 +8,9 @@ import { selectImage } from "../../features/appSlice";
 import { firebaseDb } from "../../firebaseconfig";
 import { useNavigate } from "react-router-dom";
 
-const Chat = ({ id, username, profilePic, imageUrl, read, timestamp }) => {
-  //   console.log("props", props);
+const Chat = ({ id, user, profile, imageUrl, read, timestamp }) => {
+  // console.log("props", props);
+  console.log("username", user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const openSnap = () => {
@@ -25,26 +26,11 @@ const Chat = ({ id, username, profilePic, imageUrl, read, timestamp }) => {
     }
   };
 
-  // const formatTimestamp = (timestamp) => {
-  //   const options = {
-  //     year: "numeric",
-  //     month: "long",
-  //     day: "numeric",
-  //     hour: "numeric",
-  //     minute: "numeric",
-  //   };
-  //   return new Intl.DateTimeFormat("en-US", options).format(timestamp);
-  // };
-  // const formattedTimestamp = timestamp
-  //   ? formatTimestamp(timestamp.toDate())
-  //   : "";
-
-  // console.log("formattedTimestamp:", formattedTimestamp);
   return (
     <div onClick={openSnap} className="chat">
-      <Avatar className="chat_avatar" src={profilePic} />
+      <Avatar className="chat_avatar" src={profile} />
       <div className="chat_info">
-        <h4>{username}</h4>
+        {user && <h4>{user}</h4>}
         <p>
           {!read && "Tap to view -"}{" "}
           {timestamp && (

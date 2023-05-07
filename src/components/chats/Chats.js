@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./Chats.css";
 import { Avatar } from "@mui/material";
-import { Search, ChatBubble } from "@mui/icons-material";
-import { firebaseDb } from "../../firebaseconfig";
+import { Search, ChatBubble, RadioButtonUnchecked } from "@mui/icons-material";
+import { firebaseAuth, firebaseDb } from "../../firebaseconfig";
 import Chat from "../chat/Chat";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../features/appSlice";
+import { useNavigate } from "react-router-dom";
+import { resetCameraImage } from "../../features/cameraSlice";
 
 const Chats = () => {
+  const userRedux = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  console.log("userRedux", userRedux);
   const [post, setPost] = useState([]);
   useEffect(() => {
     firebaseDb
@@ -17,13 +25,22 @@ const Chats = () => {
         );
       });
   }, []);
+  console.log("post", post);
+  const takeSnap = () => {
+    dispatch(resetCameraImage());
+    navigate("/");
+  };
   //   console.log("post", post);
   return (
     <div className="chats">
       <div className="chat_header">
-        <Avatar className="chats_avatar" />
+        <Avatar
+          src={userRedux?.profilePic}
+          onClick={() => firebaseAuth.signOut()}
+          className="chats_avatar"
+        />
         <div className="chats_search">
-          <Search className="chats_chatIcon" />
+          <Search className="chats_searchIcon" />
           <input type="text" placeholder="Friends" />
         </div>
         <ChatBubble className="chats_chatIcon" />
@@ -32,21 +49,22 @@ const Chats = () => {
         {post?.map(
           ({
             id,
-            data: { timestamp, read, imageUrl, profilePic, user },
-            //   data: { timestamp, read, imageUrl, profilePic, username },
+            data: { timestamp, read, imageUrl, profile, user },
+            //   data: { timestamp, read, imageUrl, profile, user },
           }) => (
             <Chat
               key={id}
               id={id}
               timestamp={timestamp}
-              username={user}
+              user={user}
               read={read}
-              profilePic={profilePic}
+              profile={profile}
               imageUrl={imageUrl}
             />
           )
         )}
       </div>
+      <RadioButtonUnchecked className="chats_takePicture" onClick={takeSnap} />
     </div>
   );
 };

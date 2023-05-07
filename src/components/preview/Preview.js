@@ -19,11 +19,13 @@ import {
 import { v4 as uuid } from "uuid";
 import firebase from "firebase/compat/app";
 import { firebaseStorage, firebaseDb } from "../../firebaseconfig";
+import { selectUser } from "../../features/appSlice";
 
 const Preview = () => {
   const cameraImage = useSelector(selectCameraImage);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   // console.log("cameraImage", cameraImage);
   useEffect(() => {
@@ -53,9 +55,9 @@ const Preview = () => {
           .then((url) => {
             firebaseDb.collection("posts").add({
               imageUrl: url,
-              user: "Noman",
+              user: user.username,
               read: false,
-              //profile,
+              profile: user.profilePic,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
             navigate("/chats", { replace: true });

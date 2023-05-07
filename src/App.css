@@ -6,3 +6,11 @@
   background-color: #fefc01;
   height: 100vh;
 }
+.app_logo {
+  object-fit: contain;
+  height: 100px;
+}
+.app_bodyBackground {
+  color: white;
+  height: 400px;
+}

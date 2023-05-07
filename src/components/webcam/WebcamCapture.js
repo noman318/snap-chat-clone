@@ -1,4 +1,4 @@
-import { RadioButtonUnchecked } from "@mui/icons-material";
+import { Chat, RadioButtonUnchecked } from "@mui/icons-material";
 import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import Webcam from "react-webcam";
@@ -35,6 +35,7 @@ const WebcamCapture = () => {
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}
       />
+      <Chat className="chat_button" onClick={() => navigate("/chats")} />
       <RadioButtonUnchecked
         className="webcamCapture_button"
         onClick={capture}

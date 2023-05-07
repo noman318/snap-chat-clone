@@ -9,3 +9,11 @@
   cursor: pointer;
   color: white;
 }
+.chat_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  font-size: xx-large !important;
+}
