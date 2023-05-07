@@ -24,13 +24,32 @@ const Chat = ({ id, username, profilePic, imageUrl, read, timestamp }) => {
       navigate("/chats/view");
     }
   };
+
+  // const formatTimestamp = (timestamp) => {
+  //   const options = {
+  //     year: "numeric",
+  //     month: "long",
+  //     day: "numeric",
+  //     hour: "numeric",
+  //     minute: "numeric",
+  //   };
+  //   return new Intl.DateTimeFormat("en-US", options).format(timestamp);
+  // };
+  // const formattedTimestamp = timestamp
+  //   ? formatTimestamp(timestamp.toDate())
+  //   : "";
+
+  // console.log("formattedTimestamp:", formattedTimestamp);
   return (
     <div onClick={openSnap} className="chat">
       <Avatar className="chat_avatar" src={profilePic} />
       <div className="chat_info">
         <h4>{username}</h4>
         <p>
-          Tap to view - <ReactTimeAgo date={timestamp?.toDate().getTime()} />
+          {!read && "Tap to view -"}{" "}
+          {timestamp && (
+            <ReactTimeAgo date={new Date(timestamp?.toDate()).toUTCString()} />
+          )}
         </p>
       </div>
       {!read && <StopRounded className="chat_readIcon" />}
