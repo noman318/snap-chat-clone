@@ -13,7 +13,7 @@ const Chats = () => {
   const userRedux = useSelector(selectUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("userRedux", userRedux);
+  // console.log("userRedux", userRedux);
   const [post, setPost] = useState([]);
   useEffect(() => {
     firebaseDb

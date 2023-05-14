@@ -7,8 +7,8 @@ import "./WebcamCapture.css";
 import { useNavigate } from "react-router-dom";
 
 const videoConstraints = {
-  width: 250,
-  height: 400,
+  width: 300,
+  height: 600,
   facingMode: "user",
 };
 

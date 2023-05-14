@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   background-color: #fefc01;
-  height: 100vh;
+  height: 120vh;
 }
 .app_logo {
   object-fit: contain;
@@ -12,5 +12,5 @@
 }
 .app_bodyBackground {
   color: white;
-  height: 400px;
+  height: 600px;
 }

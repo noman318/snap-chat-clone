@@ -2,7 +2,7 @@
   background-color: #feff00;
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
 }
 .login_container {
@@ -10,6 +10,6 @@
   flex-direction: column;
 }
 .login_container > img {
-  height: 300px;
+  height: 130px;
   object-fit: contain;
 }

@@ -26,6 +26,7 @@ const Preview = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  // console.log("user", user);
 
   // console.log("cameraImage", cameraImage);
   useEffect(() => {
