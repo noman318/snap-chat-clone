@@ -15,7 +15,7 @@ const ChatView = () => {
   };
 
   const exitView = () => {
-    console.log("exit from view image screen");
+    // console.log("exit from view image screen");
     navigate("/chats", { replace: true });
   };
   useEffect(() => {

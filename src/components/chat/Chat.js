@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Chat = ({ id, user, profile, imageUrl, read, timestamp }) => {
   // console.log("props", props);
-  console.log("username", user);
+  // console.log("username", user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const openSnap = () => {
